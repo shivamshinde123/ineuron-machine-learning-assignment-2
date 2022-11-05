@@ -2,6 +2,7 @@ import numpy as np
 import os
 import json
 from get_data import GetData
+from sklearn.model_selection import train_test_split
 
 
 class Preprocess:
@@ -10,12 +11,6 @@ class Preprocess:
     def __init__(self):
         pass
 
-    def remove_useless_columns(self,df):
-
-        df.drop(columns=['PassengerId','Name','Ticket','Cabin','Embarked'],axis=1,inplace=True)
-
-        return df
-
     def getting_num_and_cat_features(self,df):
 
         num_feat = ['Fare','Age']
@@ -23,6 +18,25 @@ class Preprocess:
         cat_feat = [feature for feature in df.columns if feature not in num_feat]
 
         return num_feat, cat_feat
+
+    def separating_dependent_and_independent_features(self,df):
+
+        X = df.drop('Survived',axis=1)
+        y = df['Survived']
+
+        return X, y
+
+    def train_and_test_split(self,X,y):
+
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=32490,stratify=y)
+
+        return X_train, X_test, y_train, y_test
+
+    def remove_useless_columns(self,df):
+
+        df.drop(columns=['PassengerId','Name','Ticket','Cabin','Embarked'],axis=1,inplace=True)
+
+        return df
 
     def missing_values_imputation(self,df):
 
