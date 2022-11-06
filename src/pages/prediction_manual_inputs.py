@@ -45,7 +45,7 @@ class Prediction_file:
 
         input = np.array(input_from_user).reshape(1,-1)
 
-        predict_btn = st.button("Predict Price")
+        predict_btn = st.button("Predict Survival")
 
         if predict_btn:
             with st.spinner('Wait for it...'):
@@ -54,10 +54,13 @@ class Prediction_file:
                 st.write(s_prediction)
 
         st.markdown("""
-            **Note: 1 - Person Survived**
+            **Note:**
         """)
         st.markdown("""
-            **Note: 0 - Person did not Survive**
+            **1 - Person Survived**
+        """)
+        st.markdown("""
+            **0 - Person did not Survive**
         """)
 
 
