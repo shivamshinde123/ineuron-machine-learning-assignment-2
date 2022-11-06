@@ -13,8 +13,12 @@ def app():
         The aim of the project is to predict the survival given the input from the user.
     """)
 
+
     st.markdown("""
         **Use the sidebar options to provide the inputs for the prediction.**
     """)
-
+    
+    st.markdown("""
+        **Checkout the source code of the webapp at https://github.com/shivamshinde123/ineuron-machine-learning-assignment-3**
+    """)
 app()
